@@ -3,7 +3,7 @@ import numpy as np
 import os
 from PIL import Image
 
-import joblib
+
 model = joblib.load("diabetess_model.joblib")
 
 import os
@@ -55,6 +55,7 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
