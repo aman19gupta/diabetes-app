@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import os
 from PIL import Image
+from sklearn.preprocessing import StandardScaler
+scaler = joblib.load("scaler.joblib")
 
 import joblib
 model = joblib.load("diabetess_model.joblib")
@@ -53,6 +55,7 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
