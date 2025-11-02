@@ -4,11 +4,8 @@ import pickle
 from PIL import Image
 
 # --- Load model and scaler ---
-with open('diabetes_model.pkl', 'rb') as f:
-    model = pickle.load(f)
-with open('scaler.pkl', 'rb') as f:
-    scaler = pickle.load(f)
-
+import joblib
+model = joblib.load("diabetess_model.joblib")
 # --- Title ---
 st.title("🩸 Diabetes Detection App")
 
@@ -51,3 +48,4 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
