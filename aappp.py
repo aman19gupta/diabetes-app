@@ -3,10 +3,8 @@ import numpy as np
 import os
 from PIL import Image
 
-
+import joblib
 model = joblib.load("diabetess_model.joblib")
-
-import os
 
 if os.path.exists("scaler.pkl"):
     scaler = joblib.load("scaler.pkl")
