@@ -1,6 +1,6 @@
 import streamlit as st
 import numpy as np
-import pickle
+import os
 from PIL import Image
 
 # --- Load model and scaler ---
@@ -48,4 +48,5 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
