@@ -5,6 +5,14 @@ from PIL import Image
 
 import joblib
 model = joblib.load("diabetess_model.joblib")
+
+import os
+
+if os.path.exists("scaler.pkl"):
+    scaler = joblib.load("scaler.pkl")
+else:
+    scaler = None
+
 # --- Title ---
 st.title("🩸 Diabetes Detection App")
 
@@ -47,6 +55,7 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
