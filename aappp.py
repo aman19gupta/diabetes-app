@@ -91,7 +91,7 @@ else:
 
 # --- Footer ---
 st.sidebar.markdown("---")
-# st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
