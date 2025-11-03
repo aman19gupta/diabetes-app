@@ -24,9 +24,35 @@ pregnancies = st.sidebar.number_input("Pregnancies", 0, 20, 0)
 glucose = st.sidebar.number_input("Glucose Level", 0, 200, 100)
 blood_pressure = st.sidebar.number_input("Blood Pressure", 0, 150, 70)
 skin_thickness = st.sidebar.number_input("Skin Thickness", 0, 100, 20)
-insulin = st.sidebar.number_input("Insulin", 0, 900, 80)
-bmi = st.sidebar.number_input("BMI", 0.0, 70.0, 25.0)
-dpf = st.sidebar.number_input("Diabetes Pedigree Function", 0.0, 3.0, 0.5)
+
+know_insulin = st.sidebar.checkbox("I know my insulin level", False)
+
+if know_insulin:
+    insulin = st.sidebar.number_input("Insulin Level (µU/mL)", 0, 900, 80)
+else:
+    insulin = 80  # average normal value
+    st.sidebar.write("Using average insulin level: 80 µU/mL")
+
+
+height = st.sidebar.number_input("Height (cm)", 100.0, 250.0, 165.0)
+weight = st.sidebar.number_input("Weight (kg)", 30.0, 200.0, 65.0)
+
+# Calculate BMI
+bmi = weight / ((height / 100) ** 2)
+st.sidebar.write(f"Calculated BMI: {bmi:.1f}")
+family_history = st.sidebar.selectbox(
+    "Family History of Diabetes",
+    ("No one", "Grandfather", "Father"),
+    help="Select if any close family member has diabetes."
+)
+
+# Convert dropdown choice into a numeric value for the model
+if family_history == "No one":
+    dpf = 0.1
+elif family_history == "Grandfather":
+    dpf = 0.5
+else:  # Father
+    dpf = 0.8
 age = st.sidebar.number_input("Age", 1, 120, 30)
 
 # --- Predict Button ---
@@ -56,6 +82,7 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
