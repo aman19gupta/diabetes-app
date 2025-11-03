@@ -37,8 +37,8 @@ if predict:
     # Prepare data
     user_input = np.array([[pregnancies, glucose, blood_pressure, skin_thickness,
                             insulin, bmi, dpf, age]])
-    user_input_scaled = scaler.transform(user_input)
-    prediction_prob = model.predict_proba(user_input_scaled)[0][1]
+    # user_input_scaled = scaler.transform(user_input)
+    prediction_prob = model.predict_proba(user_input)[0][1]
 
     # Show result
     st.subheader("🔍 Prediction Result:")
@@ -56,6 +56,7 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
