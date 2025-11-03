@@ -51,11 +51,12 @@ else:
     # --- Show image before prediction ---
     img = Image.open("np_file_194287.jpeg")
     st.markdown("#### 💡 Upload patient details in the sidebar to predict diabetes.")
-    st.image(img, caption="Diabetes Detection", use_container_width=True)
+    st.image(img, caption="Diabetes Detection", use_column_width=True)
 
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
