@@ -22,7 +22,13 @@ st.sidebar.header("🧍‍♀️ Enter Patient Details")
 
 pregnancies = st.sidebar.number_input("Pregnancies", 0, 20, 0)
 glucose = st.sidebar.number_input("Glucose Level", 0, 200, 100)
-blood_pressure = st.sidebar.number_input("Blood Pressure", 0, 150, 70)
+# 🩺 Blood Pressure Inputs
+systolic = st.sidebar.number_input("Systolic BP (upper number)", 80, 200, 120)
+diastolic = st.sidebar.number_input("Diastolic BP (lower number)", 50, 130, 80)
+
+# Calculate average BP for model input
+blood_pressure = (systolic + diastolic) / 2
+st.sidebar.write(f"Average BP: {blood_pressure:.1f} mmHg")
 skin_thickness = st.sidebar.number_input("Skin Thickness", 0, 100, 20)
 
 know_insulin = st.sidebar.checkbox("I know my insulin level", False)
@@ -40,19 +46,23 @@ weight = st.sidebar.number_input("Weight (kg)", 30.0, 200.0, 65.0)
 # Calculate BMI
 bmi = weight / ((height / 100) ** 2)
 st.sidebar.write(f"Calculated BMI: {bmi:.1f}")
+# 🧬 Family History Dropdown (added Mother)
 family_history = st.sidebar.selectbox(
     "Family History of Diabetes",
-    ("No one", "Grandfather", "Father"),
+    ("No one", "Grandfather", "Father", "Mother"),
     help="Select if any close family member has diabetes."
 )
 
-# Convert dropdown choice into a numeric value for the model
+# Convert dropdown to numeric value
 if family_history == "No one":
     dpf = 0.1
 elif family_history == "Grandfather":
     dpf = 0.5
-else:  # Father
+elif family_history == "Father":
     dpf = 0.8
+else:  # Mother
+    dpf = 1.0
+
 age = st.sidebar.number_input("Age", 1, 120, 30)
 
 # --- Predict Button ---
@@ -82,6 +92,7 @@ else:
 # --- Footer ---
 st.sidebar.markdown("---")
 # st.sidebar.info("Developed by Anshika Goel 💻\nData Source: Diabetes Dataset")
+
 
 
 
